@@ -146,3 +146,27 @@ gp env HELLO='world'
 All furtuer workspaces launched will set the env vars for all bash terminals open in those workspaces.
 
 You can also set env vars in the `.gotpod.yml` but this can only contain non-sensitive env vars.
+
+### Persisting Env Vars in GitPod
+
+AWS CLI is installed for the project via the bash script [`./bin/install_aws-cli`](./bin/install_aws_cli)
+[Getting Started Install (AWS CLI)](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+
+[AWS CLI Env Vars](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-envvars.html)
+
+We can check if our AWS credentials is configure correctly by running the following AWS CLI command:
+
+```sh
+aws sts get-caller-identity
+```
+
+If it is sucessful, you should see a json payload return that looks like this:
+
+```json
+{
+    "UserId": "AICBXCZPF%KZEDRBKDJYX",
+    "Account": "1234356789012",
+    "Arn": "arn:aws:iam::1234356789012:user/terraform-beginnner-bootcamp"
+}
+```
+We'll need to generate AWS CLI credentials from IAM user in orfder to use the AWS CLI.
