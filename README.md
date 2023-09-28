@@ -169,3 +169,4 @@ If it is sucessful, you should see a json payload return that looks like this:
     "Arn": "arn:aws:iam::1234356789012:user/terraform-beginnner-bootcamp"
 }
 ```
+We'll need to generate AWS CLI credentials from IAM user in orfder to use the AWS CLI.
