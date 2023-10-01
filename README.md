@@ -262,3 +262,4 @@ Provide the forllowing code to replace your token in the file:
   }
 }
 ```
+We have automated the process using the following bash script[bin/generate_tfrc_credentials](bin/generate_tfrc_credentials)
