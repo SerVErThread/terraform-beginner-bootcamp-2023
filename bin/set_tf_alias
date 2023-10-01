@@ -12,4 +12,4 @@ else
 fi
 
 # Optionally, source .bashrc to make the alias available immediately
-# source ~/.bashrc
+source ~/.bash_profile
