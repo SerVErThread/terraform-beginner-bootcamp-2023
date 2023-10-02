@@ -118,9 +118,9 @@ chmod 744 ./bin/install_terraform_cli`
 
 [CHMOD](https://en.wikipedia.org/wiki/Chmod)
 
-## Gitpod Lifecycle - Before, Init, Command
+## Gitpod Lifecycle
 
-We need to be careful using the Init because it will not rerun if we restart an exiting workspace.
+We need to be careful using the Init because it will not rerun if we restart an existing workspace.
 
 [GitPod Workspaces Tasks](https://www.gitpod.io/docs/configure/workspaces/tasks)
 
@@ -129,7 +129,7 @@ We need to be careful using the Init because it will not rerun if we restart an 
 
 ### env command
 
-We can list out all Environment variables (Env Vars) ising the `env` command
+We can list out all Environment variables (Env Vars) using the `env` command
 
 We can filter specific Env Vars using grep eg. `env | grep AWS`
 
