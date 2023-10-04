@@ -21,3 +21,27 @@ variable "bucket_name" {
     error_message = "Bucket name must be between 3 and 63 characters, and follow AWS bucket naming rules: start and end with a lowercase letter or number, and contain only lowercase letters, numbers, hyphens, and dots."
   }
 }
+
+variable "index_html_filepath" {
+  type        = string
+  description = "The file path for the index.html file"
+
+  validation {
+    condition     = fileexists(var.index_html_filepath) 
+    error_message = "The index_html_path variable must be a non-empty string and must be an HTML file."
+  }
+}
+
+variable "error_html_filepath" {
+  type        = string
+  description = "The file path for the error.html file"
+
+  validation {
+    condition     = (
+                    length(var.error_html_filepath) > 0 && 
+                    regex(".*\\.html$", var.error_html_filepath) != null
+                    )
+    error_message = "The error_html_path variable must be a non-empty string and must be an HTML file."
+  }
+}
+

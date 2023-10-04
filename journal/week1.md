@@ -115,3 +115,28 @@ module "terrahouse_aws" {
 ```  
 
 [Module Sources](https://developer.hashicorp.com/terraform/language/modules/sources)
+
+## Consideration when using ChatGPT to write terraform
+
+LLM's such as ChatGPT may not be trained on the latest docusmentation or informartion about terraform.
+
+It may likeky produce older examples that could be deprecated often affecting providers.
+
+## Working with files in Terraform
+
+In Terraform there is a special variable called path that allows us to reference local paths:
+
+- path.module is the filesystem path of the module where the expression is placed. 
+- path.root is the filesystem path of the root module of the configuration.
+
+[Special Path Variable](https://developer.hashicorp.com/terraform/language/expressions/references#filesystem-and-workspace-info)
+
+
+[](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_object)
+resource "aws_s3_object" "index-html" {
+  bucket = aws_s3_bucket.website_bucket.bucket
+  key    = "index.html"
+  source = "${path.root}/public/index.html"
+
+ etag = filemd5(var.index_html_filepath)
+}
