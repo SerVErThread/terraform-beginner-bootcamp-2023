@@ -182,3 +182,40 @@ We use the jsonencode to create the json policy inline in the hcl.
 ```
 
 [jsoncode](https://developer.hashicorp.com/terraform/language/functions/jsonencode)
+
+
+### Changing the Lifecycle of Resources
+Lifecycle arguments help control the flow of your Terraform operations by creating custom rules for resource creation and destruction. Instead of Terraform managing operations in the built-in dependency graph, lifecycle arguments help minimize potential downtime based on your resource needs as well as protect specific resources from changing or impacting infrastructure.
+
+[Resource Lifecycle](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle)
+[Meta Arguments lifecycles](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle)
+
+
+## Terraform Data
+
+Plain data values such as Local Values and Input Variables don't have any side-effects to plan against and so they aren't valid in replace_triggered_by. You can use terraform_data's behavior of planning an action each time input changes to indirectly use a plain value to trigger replacement.
+
+The terraform_data implements the standard resource lifecycle, but does not directly take any other actions. You can use the terraform_data resource without requiring or configuring a provider. It is always available through a built-in provider with the source address terraform.io/builtin/terraform.
+
+The terraform_data resource is useful for storing values which need to follow a manage resource lifecycle, and for triggering provisioners when there is no other logical managed resource in which to place them.
+
+[Terraform Data](https://developer.hashicorp.com/terraform/language/resources/terraform-data)
+
+```sh
+variable "revision" {
+  default = 1
+}
+
+resource "terraform_data" "replacement" {
+  input = var.revision
+}
+
+# This resource has no convenient attribute which forces replacement,
+# but can now be replaced by any change to the revision variable value.
+resource "example_database" "test" {
+  lifecycle {
+    replace_triggered_by = [terraform_data.replacement]
+  }
+}
+```
+
