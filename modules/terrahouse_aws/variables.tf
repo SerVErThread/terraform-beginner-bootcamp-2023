@@ -54,3 +54,13 @@ variable "content_version" {
     error_message = "The content_version must be a positive integer starting at 1."
   }
 }
+
+variable "assets_path" {
+  type        = string
+  description = "The path to the assets folder"
+
+  validation {
+    condition     = fileexists(var.assets_path) 
+    error_message = "The assets_path variable must be a non-empty string and must be a folder."
+  }
+}

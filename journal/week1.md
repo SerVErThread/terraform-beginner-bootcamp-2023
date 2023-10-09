@@ -263,3 +263,16 @@ resource "aws_instance" "web" {
 ```
 
 This will execute commands on the machine which you target. You will need to provide credentials such as SSH to get into the machine.
+
+## For each Expressions
+
+For each allows us to enumerate over complex data types
+
+```sh
+[for s in var.list : upper(s)]
+```
+
+This is mostly useful when you are creating multiples of a cloud resource and you want to reduece the amount of repetitive terrafomr code.
+
+[For Each](https://developer.hashicorp.com/terraform/language/expressions/for)
+
