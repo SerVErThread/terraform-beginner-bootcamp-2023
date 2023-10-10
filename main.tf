@@ -1,12 +1,12 @@
-#terraform {
-#  cloud {
-#    organization = "wedgg"
-#
-#    workspaces {
-#      name = "terra-house-1"
-#    }
-#  }
-#}
+terraform {
+  cloud {
+    organization = "wedgg"
+
+    workspaces {
+      name = "terraform-cloud"
+    }
+  }
+}
 
 
 
