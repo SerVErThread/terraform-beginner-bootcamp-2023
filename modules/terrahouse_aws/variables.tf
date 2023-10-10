@@ -60,7 +60,7 @@ variable "assets_path" {
   description = "The path to the assets folder"
 
   validation {
-    condition     = fileexists(var.assets_path) 
+    condition     = fileexists("${var.assets_path}/acanum_cover_copy.jpg")
     error_message = "The assets_path variable must be a non-empty string and must be a folder."
   }
 }

@@ -22,4 +22,3 @@ variable "assets_path" {
   type        = string
 }
   
-}
