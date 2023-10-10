@@ -7,3 +7,12 @@ output "S3_website_endpoint" {
   value = module.terrahouse_aws.website_endpoint
   #aws_s3_bucket_website_configuration.website_configuration.website_endpoint
 }
+
+locals {
+  root-path = path.root
+}
+
+output "root_path" {
+  description = "Root path of the project"
+  value = local.root-path
+}
