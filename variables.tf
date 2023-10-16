@@ -18,7 +18,7 @@ variable "content_version" {
   type        = number
 }
 
-variable "assets_path" {
-  type        = string
-}
+# variable "assets_path" {
+#   type        = string
+# }
   
